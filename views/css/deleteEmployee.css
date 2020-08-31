@@ -1,0 +1,24 @@
+.container{
+    margin-top:5%;
+    background-color: #eee;
+
+}
+
+.inner-container{
+    padding:5%;
+}
+
+body{
+	background-color: #03A9F4;
+}
+
+#selectOption{
+    width: 20%;
+}
+#btn{
+    width: 5%;
+}
+
+#name{
+    width: 72%;
+}

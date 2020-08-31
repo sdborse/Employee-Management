@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Employee Management</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+	</script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="./css/dashboard.css">
+    <link rel="stylesheet" href="./css/tailwind.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+   
+</head>
+<body>
+	<header class="border-b  p-6 text-center bg-gray-100 flex justify-between item-center">
+        <a href="/dashboard" class="font-extrabold text-4lg hover:no-underline hover:text-black">Employee Management</a>
+        <a href="/logout" class="font-extrabold text-4lg hover:no-underline hover:text-black hover:bg-red-700 glyphicon glyphicon-log-out btn btn-info"> Logout</a>
+    </header>
+    <script type="text/javascript">
+        var msg='<%= alertType%>';
+        if(msg=="delete")
+            alert("Data Successfully Deleted..");
+    </script>
+	<div class="container">
+		 <div class="flex justify-center flex-col py-3  inner-container mb-10">
+
+            <div class="wrapper text-center py-2 ">
+                <a href="/addEmployee" class="text-black font-bold py-2 px-4 block rounded transition duration-500 ease-in-out hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 ...">Add New Employee</a>
+            </div>
+
+            <div class="wrapper text-center py-2 ">
+                <a href="/updateEmployee" class="text-black font-bold py-2 px-4 block rounded transition duration-500 ease-in-out hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 ...">Update Employee Details</a>
+            </div>
+            <div class="wrapper text-center py-2 ">
+                <a href="/searchEmployee" class="text-black font-bold py-2 px-4 block rounded transition duration-500 ease-in-out hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 ...">Search Employee</a>
+            </div>
+          	 <div class="wrapper text-center py-2 ">
+                <a href="/deleteEmployee" class="text-black font-bold py-2 px-4 block rounded transition duration-500 ease-in-out hover:bg-red-500 transform hover:-translate-y-1 hover:scale-110 ...">Delete Employee</a>
+            </div>
+        </div>
+        <div class="flex justify-center flex-col p-3 bg-gray-200 font-bold" id="tableDiv">
+            <h2 class="h4 font-extrabold" id="heading">All Employee Details</h2>
+            <table class="table-auto border " id="myTable">
+                <thead>
+                    <tr>
+                        <th class="px-4 py-2 text-center">ID</th>
+                        <th class="px-4 py-2 text-center">Name</th>
+                        <th class="px-4 py-2 text-center">Mobile Number</th>
+                        <th class="px-4 py-2 text-center">Email Id</th>
+                        <!--
+                        <th class="px-4 py-2 text-center">Qualification</th>
+                        <th class="px-4 py-2 text-center">Salary</th>
+                        -->
+                        <th class="px-4 py-2 text-center">Department</th>
+                        <th class="px-4 py-2 text-center"></th>
+                        <th class="px-4 py-2 text-center"></th>
+                    </tr>
+                </thead>
+               
+                <tbody>
+                    <%
+                    if(det=="post")
+                    {
+                        if(userData.length!=0){
+                            var i=1;
+                            userData.forEach(function(data){
+                            %>
+                            <tr class="transition duration-500 ease-in-out hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110 ...">
+                                <td class="px-4 py-2 font-extrabold"><%=data.Id; %></td>
+                                <td class="px-4 py-2 font-extrabold"><a class="block" href="/updateWithEmployeeId?id=<%=data.Id;%>" ><%= data.Name %></a></td>
+                                <td class="px-4 py-2 font-extrabold" ><%=data.MobileNumber %></td>
+                                <td class="px-4 py-2 font-extrabold"><%=data.EmailId %></td>
+                                <!--
+                                <td class="px-4 py-2 font-extrabold"><%=data.Qualification %></td>
+                                <td class="px-4 py-2 font-extrabold"><%=data.Salary %></td>
+                                -->
+                                <td class="px-4 py-2 font-extrabold"><%=data.Department %></td>
+                                <td><a href="/updateWithEmployeeId?id=<%=data.Id;%>" class="glyphicon glyphicon-pencil px-4 py-2 block font-extrabold hover:no-underline text-center"></a></td>
+                                <td><a href="/deleteEmployeeDetailsById?id=<%=data.Id;%>" onclick="return confirm('Are you sure Want to Delete?')" class="px-4 py-2 font-extrabold glyphicon block glyphicon-trash hover:no-underline text-center"></a></td>
+                                
+                            </tr>
+                            <%  i++; }) %>
+                            <% } else{ %>
+                                <tr>
+                                    <td colspan="7">No Data Found</td>
+                                </tr>
+                            <% }
+                    }else{ %>
+                        <tr>
+                            <td colspan="7" class="border px-4 py-2">No Data Found</td>
+                        </tr>
+                    <% }
+                    %>
+                </tbody>
+            </table>
+        </div>
+	</div>
+	<footer class="font-bold mt-3 bottom-0 bg-gray-300 text-center  p-3 w-full">
+        &copy; Sumit Borse 2020
+    </footer>
+    <script>
+        $(document).ready(function(){
+        $('#myTable').dataTable({
+        });
+
+    });    
+    </script>
+</body>
+
+</html>

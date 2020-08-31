@@ -1,0 +1,47 @@
+.container{
+    margin-top:5%;
+    
+
+}
+
+.inner-container{
+    padding:5%;
+    background-color: #eee;
+}
+
+body{
+	background-color: #03A9F4;
+}
+
+table,td,th,tr,thead{
+    border: solid rgb(0, 0, 0) 2px;
+    border-collapse: collapse;
+}
+
+
+#selectOption{
+    width: 15%;
+}
+#btn{
+    width: 5%;
+}
+
+#name{
+    width: 40%;
+}
+
+#heading{
+    width: 30%;
+    text-align: left;
+}
+
+#tableDiv input{
+    height: 30px;
+    border: solid black 2px;
+    border-radius: 10px;
+}
+
+#tableDiv input :focus{
+    height: 30px;
+    border: none;
+}

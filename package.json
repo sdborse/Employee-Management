@@ -1,0 +1,30 @@
+{
+  "name": "employee-management",
+  "version": "1.0.0",
+  "description": "Node js applicarion is used to perform CURD operation using MySql Database",
+  "main": "postcss.config.js",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "express-validator": "^6.6.1",
+    "mysql": "^2.18.1",
+    "tailwindcss": "^1.7.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "Sumit Borse",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sdborse/Employee-Management.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sdborse/Employee-Management/issues"
+  },
+  "homepage": "https://github.com/sdborse/Employee-Management#readme"
+}

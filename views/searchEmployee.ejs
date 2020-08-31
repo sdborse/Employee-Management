@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add New Employee</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+    <script type="text/javascript" src="./script/searchEmployee.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./css/searchEmployee.css">
+	<link rel="stylesheet" href="./css/tailwind.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.js"></script>
+</head>
+<body>
+	<header class="border-b  p-6 text-center bg-gray-100 flex justify-between item-center">
+        <a href="/dashboard" class="font-extrabold text-4lg hover:no-underline hover:text-black">Employee Management</a>
+        <a href="/logout" class="font-extrabold text-4lg hover:no-underline hover:text-black hover:bg-red-700 glyphicon glyphicon-log-out btn btn-info"> Logout</a>
+     </header>
+
+	<div class="container">
+        <div>
+            <h1 class="h1 text-center font-extrabold">Search Employee Details</h1>
+        </div>
+		<div class="form-div">
+            <p id="nameError" class="error text-red-600"></p>
+            <form class="form" method="POST" onsubmit="return checkDet()" action="\searchEmployee">
+                <div class="mb-4 flex justify-between">
+                   <select name="selOption" class=" shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="selectOption" onchange="getVal()">
+                       <option>Select Search Type</option>
+                       <option>Id</option>
+                       <option>Name</option>
+                       <option>Department</option>
+                       <option>Qualification</option>
+                   </select>
+                   <input type="text" name="searchKey" placeholder="Enter " class="shadow appearance-none border rounded  py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name">
+                   
+                   
+                   <button class="btn btn-primary" id="btn" type="submit">
+                    <i class="glyphicon glyphicon-search"></i>
+                   </button>
+               </div>
+            </form>   
+        </div>
+        
+        <div class="flex justify-center flex-col p-3 bg-gray-200">
+            <h2 class="h3 font-extrabold">Employee Details</h2>
+            <table class="table-auto border" id="myTable">
+                <thead>
+                    <tr>
+                        <th class="px-4 py-2 border text-center">ID</th>
+                        <th class="px-4 py-2 border text-center">Name</th>
+                        <th class="px-4 py-2 border text-center">Mobile Number</th>
+                        <th class="px-4 py-2 border text-center">Email Id</th>
+                        <th class="px-4 py-2 border text-center">Qualification</th>
+                        <th class="px-4 py-2 border text-center">Salary</th>
+                        <th class="px-4 py-2 border text-center">Department</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <%
+                    if(det=="post")
+                    {
+                        if(userData.length!=0){
+                            var i=1;
+                            userData.forEach(function(data){
+                            %>
+                            <tr class="transition duration-500 ease-in-out  hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110 ...">
+                                <td class="border px-4 py-2  font-extrabold"><%=data.Id; %></td>
+                                <td class="border px-4 py-2 font-extrabold"><%=data.Name %></td>
+                                <td class="border px-4 py-2 font-extrabold"><%=data.MobileNumber %></td>
+                                <td class="border px-4 py-2 font-extrabold"><%=data.EmailId %></td>
+                                <td class="border px-4 py-2 font-extrabold"><%=data.Qualification %></td>
+                                <td class="border px-4 py-2 font-extrabold"><%=data.Salary %></td>
+                                <td class="border px-4 py-2 font-extrabold"><%=data.Department %></td>
+                            </tr>
+                            <%  i++; }) %>
+                            <% } else{ %>
+                                <tr>
+                                    <td colspan="7">No Data Found</td>
+                                </tr>
+                            <% }
+                    }else{ %>
+                        <tr>
+                            <td colspan="7" class="border px-4 py-2">No Data Found</td>
+                        </tr>
+                    <% }
+                    %>
+                </tbody>
+            </table>
+        </div>
+	</div>
+	<footer class="font-bold mt-10 bottom-0 bg-gray-300 text-center  p-3 w-full">
+        &copy; Sumit Borse 2020
+    </footer>
+    <script>
+        $(document).ready(function(){
+        $('#myTable').dataTable({
+        });
+
+    });    
+    </script>
+</body>
+</html>

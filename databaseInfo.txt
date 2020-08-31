@@ -1,0 +1,6 @@
+To Create MySql Database:-
+	create database employee_management;
+To Create Table 
+	create table EmployeeDetail(Id int primary key,Name varchar(255),MobileNumber decimal(10,0),EmailId varchar(255),Qualification varchar(255),Salary float,Department varchar(255));
+To Create Admin Login Details Table
+	create table AdminDetails(Id int primary key,UserName varchar(255),Password varchar(255), EmailId varchar(255), MobileNumber decimal(10,0));

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add New Employee</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+    </script>
+
+    <script type="text/javascript" src="./script/addEmployee.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./css/addEmployee.css">
+    <link rel="stylesheet" href="./css/tailwind.css">
+
+</head>
+<body>
+    <header class="border-b  p-6 text-center bg-gray-100 flex justify-between item-center">
+        <a href="/dashboard" class="font-extrabold text-4lg hover:no-underline hover:text-black">Employee Management</a>
+        <a href="/logout" class="font-extrabold text-4lg hover:no-underline hover:text-black hover:bg-red-700 glyphicon glyphicon-log-out btn btn-info"> Logout</a>
+     </header>
+    <script type="text/javascript">
+        var msg='<%= alertType%>';
+        if(msg!="")
+            alert("Employee Details Successfully Saved To Database");
+    </script>
+    <div class="container">
+        <div>
+            <h1 class="h1 text-center font-extrabold">Add New Employee</h1>
+        </div>
+        <div>
+            <form class="form" method="post" onsubmit="return formValidate()" action="/saveEmployeeDetails" >
+                <div class="mb-4">
+                    <label class="form-label block text-gray-700 text-sm font-bold mb-2 text-lg" for="id ">
+                    ID
+                    </label>
+                    <input type="text" id="userId" name="id" placeholder="Employee ID" required="" class="form-label shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <p id="userIdError" class="error text-red-600"></p>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label block text-gray-700 text-sm font-bold mb-2 text-lg" for="name">
+                    Name
+                    </label>
+                    <input type="text" name="name" placeholder="Employee Name" required="" class="form-label shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="userName">
+                    <p id="userNameError" class="error text-red-600"></p>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label block text-gray-700 text-sm font-bold mb-2 text-lg" for="mobileNumber">
+                    Mobile Number
+                    </label>
+                    <input type="text" id="userMobileNumber" name="mobileNumber" placeholder="Mobile Number" required="" class="form-label shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <p id="userMobileNumberError" class="error text-red-600"></p>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label block text-gray-700 text-sm font-bold mb-2 text-lg" for="emailId">
+                    Email Id
+                    </label>
+                    <input type="text" id="userEmailId" name="emailId" placeholder="Email Address" required="" class="form-label shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <p id="userEmailIdError" class="error text-red-600"></p>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label block text-gray-700 text-sm font-bold mb-2 text-lg" for="qualification">
+                    Qualification
+                    </label>
+                    <input type="text" id="userQualification" name="qualification" placeholder="Qualification" required="" class="form-label shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <p id="userQualificationError" class="error text-red-600"></p>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label block text-gray-700 text-sm font-bold mb-2 text-lg" for="salary">
+                    Salary
+                    </label>
+                    <input type="text" name="salary" id="userSalary" placeholder="Salary" required="" class="form-label shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <p id="userSalaryError" class="error text-red-600"></p>
+                </div>
+
+                <div class="mb-4">
+                    <label class="form-label block text-gray-700 text-sm font-bold mb-2 text-lg" for="salary">
+                    Department
+                    </label>
+                    <input type="text" name="department" id="userDepartment" placeholder="Department" required="" class="form-label shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+                    <p id="userDepartmentError" class="error text-red-600"></p>
+                </div>
+
+                <div class="flex justify-between pb-3">
+                    <input type="submit" value="Save Details" class="btn btn-primary">
+                    <input type="reset" value="clear" class="btn btn-primary">
+                </div>    
+
+            </form>      
+        </div>
+    </div>
+    <footer class="font-bold mt-10 bottom-0 bg-gray-300 text-center  p-3 w-full">
+        &copy; Sumit Borse 2020
+    </footer>
+</body>
+</html>
